@@ -20,6 +20,12 @@ func (t *Ticker) Stop() {
 	close(t.StopC)
 }
 
+// StopWait stops the ticker and awaits for the WaitGroup to return
+func (t *Ticker) StopWait() {
+	t.Stop()
+	t.WG.Wait()
+}
+
 // New returns a new ClosableTicker
 func New(d time.Duration) *Ticker {
 	return &Ticker{

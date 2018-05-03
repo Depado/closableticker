@@ -74,7 +74,6 @@ func main() {
 	ct := closableticker.New(1 * time.Second)
 	go work(ct)
 	time.Sleep(5 * time.Second)
-	ct.Stop()
-	ct.WG.Wait()
+	ct.StopWait()
 }
 ```
